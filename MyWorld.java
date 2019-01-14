@@ -29,11 +29,41 @@ public class MyWorld extends World
         }
     }
     public void spawn() {
-        addObject(new Mensch(),100,100);
-        addObject(new Pizza(),200,200);
-        addObject(new Hippo(),700,500);
-        addObject(new Spear(), 100,100);
-        //if (Mensch.died == 1) {
+        int randomX = 0;
+        int randomY = 0;
+        int randomAnzahl = 0;
+        
+        randomX = (int)(Math.random()*1000);
+        randomY = (int)(Math.random()*800);
+        randomAnzahl = (int)(Math.random()*10);
+        
+        addObject(new Mensch(),randomX,randomY);
+        addObject(new Spear(), randomX,100);
+        for (int i = 0; i < randomAnzahl; i++ ) {
+            randomX = (int)(Math.random()*1000);
+            randomY = (int)(Math.random()*800);
+            addObject(new Pizza(),randomX,randomY);
+        }
+        randomAnzahl = (int)(Math.random()*10);
+        for (int i = 0; i < randomAnzahl; i++ ) {
+            randomX = (int)(Math.random()*1000);
+            randomY = (int)(Math.random()*800);
+            addObject(new Cupcake(),randomX,randomY);
+        }
+        randomAnzahl = (int)(Math.random()*10);
+        for (int i = 0; i < randomAnzahl; i++ ) {
+            randomX = (int)(Math.random()*1000);
+            randomY = (int)(Math.random()*800);
+            addObject(new Hippo(),randomX,randomY);
+        }
+        randomAnzahl = (int)(Math.random()*10);
+        for (int i = 0; i < randomAnzahl; i++ ) {
+            randomX = (int)(Math.random()*1000);
+            randomY = (int)(Math.random()*800);
+            addObject(new Pig(),randomX,randomY);
+        }
+        
+        //if (human.died == 1) {
         //    addObject(new Died(),500,400);
         //}
     }

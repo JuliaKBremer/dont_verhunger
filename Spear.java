@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Spear extends Weapon
 {
+    
     public void act() 
     {
         scale();
@@ -18,13 +19,5 @@ public class Spear extends Weapon
         GreenfootImage image = new GreenfootImage(spear);
         image.scale(30,30);
         setImage(image);
-    }
-    private void stick() {
-        if (isTouching(Mensch.class)) {
-            Mensch human=(Mensch)getOneIntersectingObject(Mensch.class);
-            int x = human.getX();
-            int y = human.getY();
-            this.setLocation(x, y);
-        }
     }
 }

@@ -14,6 +14,14 @@ public class Weapon extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        
     }    
+    public void stick() {
+        if (isTouching(Mensch.class)) {
+            Mensch human=(Mensch)getOneIntersectingObject(Mensch.class);
+            int x = human.getX();
+            int y = human.getY();
+            this.setLocation(x, y);
+        }
+    }
 }

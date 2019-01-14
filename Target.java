@@ -1,17 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Target here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Target extends Actor
 {
-    /**
-     * Act - do whatever the Target wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() 
     {
         move();
@@ -24,16 +14,16 @@ public class Target extends Actor
       
       switch (zahl) {
           case 0:
-            x--;
+            x -= 3;
             break;
           case 1:
-            y++;
+            y += 3;
             break;
           case 2:
-            x++;
+            x += 3;
             break;
           case 3:
-            y--;
+            y -= 3;
             break;
       }
       this.setLocation(x, y);   

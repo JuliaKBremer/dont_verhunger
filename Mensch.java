@@ -42,6 +42,10 @@ public class Mensch extends Actor
             Pizza pizza=(Pizza)getOneIntersectingObject(Pizza.class);
             nutrition += Pizza.nutrition;
         }
+        else if (isTouching(Cupcake.class)) {
+            Cupcake cupcake=(Cupcake)getOneIntersectingObject(Cupcake.class);
+            nutrition += Cupcake.nutrition;
+        }
     }
     private void die() {
         if (nutrition <= 0 || health <= 0) {
@@ -50,7 +54,11 @@ public class Mensch extends Actor
         }
     }
     private void attack() {
-        if (isTouching(Hippo.class)) {
+        if (isTouching(Pig.class)) {
+            Pig pig=(Pig)getOneIntersectingObject(Pig.class);
+            pig.health -= 10;
+        }
+        else if (isTouching(Hippo.class)) {
             Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
             hippo.health -= 10;
         }
