@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Cupcake extends Food
 {
-    public static int nutrition = 10;
+    public static int nutrition = 50;
     public void act() 
     {
         eaten();

@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Pizza extends Food
 {
-    public static int nutrition = 30;
+    public static int nutrition = 100;
     /**
      * Act - do whatever the Pizza wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

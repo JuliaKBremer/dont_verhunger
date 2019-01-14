@@ -15,6 +15,7 @@ public class Mensch extends Actor
     public void act() 
     {
         move();
+        moveNext();
         eat();
         attack();
         demage();
@@ -54,13 +55,15 @@ public class Mensch extends Actor
         }
     }
     private void attack() {
-        if (isTouching(Pig.class)) {
-            Pig pig=(Pig)getOneIntersectingObject(Pig.class);
-            pig.health -= 10;
-        }
-        else if (isTouching(Hippo.class)) {
-            Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
-            hippo.health -= 10;
+        if (isTouching(Spear.class)) {
+            if (isTouching(Pig.class)) {
+                Pig pig=(Pig)getOneIntersectingObject(Pig.class);
+                pig.health -= 10;
+            }
+            else if (isTouching(Hippo.class)) {
+                Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
+                hippo.health -= 10;
+            }
         }
     }
     private void demage() {
@@ -72,6 +75,14 @@ public class Mensch extends Actor
     private void heal() {
         if (nutrition >= 500 && health < 100) {
             health += 2;
+        }
+    }
+    public void moveNext() {
+        int humanX = getX();
+        int humanY = getY();
+        
+        if (humanX <= 0 || humanX >= 1000 || humanY <= 0 || humanY >= 800) {
+            MyWorld world = new MyWorld();
         }
     }
 }
