@@ -93,6 +93,7 @@ public class Mensch extends Actor
                 getWorld().removeObjects(getWorld().getObjects(Pizza.class));
                 getWorld().removeObjects(getWorld().getObjects(Cupcake.class));
                 getWorld().removeObjects(getWorld().getObjects(Pig.class));
+                getWorld().removeObjects(getWorld().getObjects(Spear.class));
                 spawn();
             }
         }
@@ -107,6 +108,30 @@ public class Mensch extends Actor
         randomAnzahl = (int)(Math.random()*10);
         
         if (newspawn == 1) {
+            if (humanX <= 0) {
+                this.setLocation(999, humanY);
+                if (isTouching(Spear.class)) {
+                    getWorld().addObject(new Spear(), 999,humanY);
+                }
+            }
+            else if (humanX >= 999) {
+                this.setLocation(0, humanY);
+                if (isTouching(Spear.class)) {
+                    getWorld().addObject(new Spear(), 0, humanY);
+                }
+            }
+            if (humanY <= 0) {
+                this.setLocation(humanX, 799);
+                if (isTouching(Spear.class)) {
+                    getWorld().addObject(new Spear(), humanX,999);
+                }
+            }
+            else if (humanY >= 799) {
+                this.setLocation(humanX, 0);
+                if (isTouching(Spear.class)) {
+                    getWorld().addObject(new Spear(), humanX,0);
+                }
+            }
             getWorld().addObject(new Spear(), randomX,randomY);
             for (int i = 0; i < randomAnzahl; i++ ) {
                 randomX = (int)(Math.random()*1000);
