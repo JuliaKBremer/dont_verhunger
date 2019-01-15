@@ -12,9 +12,14 @@ public class Mensch extends Actor
     public static int died = 0;
     public int health = 100;
     private int nutrition = 1000;
+    public int newspawn = 1;
+    private int humanX = 0;
+    private int humanY = 0;
     public void act() 
     {
         move();
+        humanX = getX();
+        humanY = getY();
         moveNext();
         eat();
         attack();
@@ -37,6 +42,9 @@ public class Mensch extends Actor
             setLocation(getX()+this.speed, getY());
         }
         nutrition -= 1;
+        if (humanX > 0 && humanX < 999 && humanY > 0 && humanY < 799) {
+            newspawn = 1;
+        }
     }
     private void eat() {
         if (isTouching(Pizza.class)) {
@@ -78,11 +86,52 @@ public class Mensch extends Actor
         }
     }
     public void moveNext() {
-        int humanX = getX();
-        int humanY = getY();
+       
+        if (newspawn == 1) {
+            if (humanX <= 0 || humanX >= 999 || humanY <= 0 || humanY >= 799) {
+                getWorld().removeObjects(getWorld().getObjects(Hippo.class));
+                getWorld().removeObjects(getWorld().getObjects(Pizza.class));
+                getWorld().removeObjects(getWorld().getObjects(Cupcake.class));
+                getWorld().removeObjects(getWorld().getObjects(Pig.class));
+                spawn();
+            }
+        }
+    }
+    public void spawn() {
+        int randomX = 0;
+        int randomY = 0;
+        int randomAnzahl = 0;
         
-        if (humanX <= 0 || humanX >= 1000 || humanY <= 0 || humanY >= 800) {
-            MyWorld world = new MyWorld();
+        randomX = (int)(Math.random()*1000);
+        randomY = (int)(Math.random()*800);
+        randomAnzahl = (int)(Math.random()*10);
+        
+        if (newspawn == 1) {
+            getWorld().addObject(new Spear(), randomX,randomY);
+            for (int i = 0; i < randomAnzahl; i++ ) {
+                randomX = (int)(Math.random()*1000);
+                randomY = (int)(Math.random()*800);
+                getWorld().addObject(new Pizza(),randomX,randomY);
+            }
+            randomAnzahl = (int)(Math.random()*10);
+            for (int i = 0; i < randomAnzahl; i++ ) {
+                randomX = (int)(Math.random()*1000);
+                randomY = (int)(Math.random()*800);
+                getWorld().addObject(new Cupcake(),randomX,randomY);
+            }
+            randomAnzahl = (int)(Math.random()*10);
+            for (int i = 0; i < randomAnzahl; i++ ) {
+                randomX = (int)(Math.random()*1000);
+                randomY = (int)(Math.random()*800);
+                getWorld().addObject(new Hippo(),randomX,randomY);
+            }
+            randomAnzahl = (int)(Math.random()*10);
+            for (int i = 0; i < randomAnzahl; i++ ) {
+                randomX = (int)(Math.random()*1000);
+                randomY = (int)(Math.random()*800);
+                getWorld().addObject(new Pig(),randomX,randomY);
+            }
+            newspawn = 0;
         }
     }
 }
