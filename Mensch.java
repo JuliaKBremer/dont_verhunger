@@ -63,14 +63,18 @@ public class Mensch extends Actor
         }
     }
     private void attack() {
-        if (isTouching(Spear.class)) {
-            if (isTouching(Pig.class)) {
-                Pig pig=(Pig)getOneIntersectingObject(Pig.class);
-                pig.health -= 10;
-            }
-            else if (isTouching(Hippo.class)) {
-                Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
-                hippo.health -= 10;
+        if(Greenfoot.isKeyDown("space")) {
+            if (isTouching(Spear.class)) {
+                Spear spear=(Spear)getOneIntersectingObject(Spear.class);
+                //spear.setImage(""); <-- Neues Image bei angriff!
+                if (isTouching(Pig.class)) {
+                    Pig pig=(Pig)getOneIntersectingObject(Pig.class);
+                    pig.health -= 10;
+                }
+                else if (isTouching(Hippo.class)) {
+                    Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
+                    hippo.health -= 10;
+                }
             }
         }
     }
