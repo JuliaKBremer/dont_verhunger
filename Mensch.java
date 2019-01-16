@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
+import java.util.Arrays;
+import java.util.*;
 /**
  * Write a description of class Mensch here.
  * 
@@ -12,15 +14,15 @@ public class Mensch extends Actor
     public static int died = 0;
     public int health = 100;
     private int nutrition = 1000;
-    public int newspawn = 1;
+    public int newspawn = 0;
     private int humanX = 0;
     private int humanY = 0;
     public void act() 
     {
+        moveNext();
         move();
         humanX = getX();
         humanY = getY();
-        moveNext();
         eat();
         attack();
         demage();
@@ -29,7 +31,7 @@ public class Mensch extends Actor
     }    
     private void move()
     {
-        if(Greenfoot.isKeyDown("up")) {
+            if(Greenfoot.isKeyDown("up")) {
             setLocation(getX(), getY()-this.speed);
         }
         else if (Greenfoot.isKeyDown("down")) {
@@ -97,7 +99,11 @@ public class Mensch extends Actor
                 getWorld().removeObjects(getWorld().getObjects(Pizza.class));
                 getWorld().removeObjects(getWorld().getObjects(Cupcake.class));
                 getWorld().removeObjects(getWorld().getObjects(Pig.class));
-                getWorld().removeObjects(getWorld().getObjects(Spear.class));
+                for (Spear spear : getWorld().getObjects(Spear.class)){
+                    if (!(spear.getX() == getX() && spear.getY() == getY())){
+                        getWorld().removeObject(spear);
+                    }
+                }
                 spawn();
             }
         }
@@ -110,31 +116,30 @@ public class Mensch extends Actor
         randomX = (int)(Math.random()*1000);
         randomY = (int)(Math.random()*800);
         randomAnzahl = (int)(Math.random()*10);
-        
         if (newspawn == 1) {
-            if (humanX <= 0) {
-                this.setLocation(999, humanY);
+            if (humanX <= 1) {
                 if (isTouching(Spear.class)) {
                     getWorld().addObject(new Spear(), 999,humanY);
                 }
+                this.setLocation(999, humanY);
             }
             else if (humanX >= 999) {
-                this.setLocation(0, humanY);
                 if (isTouching(Spear.class)) {
                     getWorld().addObject(new Spear(), 0, humanY);
                 }
+                this.setLocation(0, humanY);
             }
-            if (humanY <= 0) {
-                this.setLocation(humanX, 799);
+            if (humanY <= 1) {
                 if (isTouching(Spear.class)) {
-                    getWorld().addObject(new Spear(), humanX,999);
+                    getWorld().addObject(new Spear(), humanX,799);
                 }
+                this.setLocation(humanX, 799);
             }
             else if (humanY >= 799) {
-                this.setLocation(humanX, 0);
                 if (isTouching(Spear.class)) {
                     getWorld().addObject(new Spear(), humanX,0);
                 }
+                this.setLocation(humanX, 0);
             }
             getWorld().addObject(new Spear(), randomX,randomY);
             for (int i = 0; i < randomAnzahl; i++ ) {

@@ -21,6 +21,7 @@ public class Weapon extends Actor
             Mensch human=(Mensch)getOneIntersectingObject(Mensch.class);
             int x = human.getX();
             int y = human.getY();
+            boolean got_spear = true;
             this.setLocation(x, y);
         }
     }
