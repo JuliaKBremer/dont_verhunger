@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Target extends Actor
 {
+    public int speed = 1;
     public void act() 
     {
         move();
@@ -14,16 +15,16 @@ public class Target extends Actor
       
       switch (zahl) {
           case 0:
-            x -= 3;
+            x -= speed;
             break;
           case 1:
-            y += 3;
+            y += speed;
             break;
           case 2:
-            x += 3;
+            x += speed;
             break;
           case 3:
-            y -= 3;
+            y -= speed;
             break;
       }
       this.setLocation(x, y);   
