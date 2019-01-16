@@ -26,7 +26,7 @@ public class Mensch extends Actor
         eat();
         attack();
         demage();
-        heal();
+        //heal();
         die();
     }    
     private void move()
@@ -52,11 +52,14 @@ public class Mensch extends Actor
         if (isTouching(Pizza.class)) {
             Pizza pizza=(Pizza)getOneIntersectingObject(Pizza.class);
             nutrition += Pizza.nutrition;
+            health += 5;
         }
         else if (isTouching(Cupcake.class)) {
             Cupcake cupcake=(Cupcake)getOneIntersectingObject(Cupcake.class);
             nutrition += Cupcake.nutrition;
+            health += 2;
         }
+        updateHealth();
     }
     private void die() {
         if (nutrition <= 0 || health <= 0) {
@@ -83,14 +86,21 @@ public class Mensch extends Actor
     private void demage() {
         if (isTouching(Hippo.class)) {
             Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
-            health -= 10;
+            health -= 5;
+            updateHealth();
         }
     }
-    private void heal() {
-        if (nutrition >= 500 && health < 100) {
+    private void updateHealth() {
+            getWorld().removeObjects(getWorld().getObjects(Bar.class));
+            Bar bar = new Bar("Player 1", "health Points", health, 100);
+            getWorld().addObject(bar, 125, 40);
+    }
+    /*private void heal() {
+        if (nutrition >= 400 && health < 100) {
             health += 2;
+            updateHealth();
         }
-    }
+    }*/
     public void moveNext() {
        
         if (newspawn == 1) {

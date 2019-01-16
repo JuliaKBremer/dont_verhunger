@@ -8,129 +8,77 @@ class.MyWorld.image=gras10.png
 class.Pig.image=pig.png
 class.Pizza.image=pizza_cheese.png
 class.Spear.image=spear.png
-<<<<<<< HEAD
 class.Startmenue.image=bluerock.jpg
 dependency1.from=Startmenue
 dependency1.to=Exit_Button
 dependency1.type=UsesDependency
 dependency10.from=MyWorld
-dependency10.to=Pig
-dependency10.type=UsesDependency
-dependency11.from=Mensch
-dependency11.to=Pizza
-dependency11.type=UsesDependency
-dependency12.from=Mensch
-dependency12.to=Cupcake
-=======
-dependency1.from=MyWorld
-dependency1.to=Bar
-dependency1.type=UsesDependency
-dependency10.from=Mensch
 dependency10.to=Cupcake
 dependency10.type=UsesDependency
-dependency11.from=Mensch
-dependency11.to=Pig
+dependency11.from=MyWorld
+dependency11.to=Hippo
 dependency11.type=UsesDependency
-dependency12.from=Mensch
-dependency12.to=Hippo
->>>>>>> health bar added
+dependency12.from=MyWorld
+dependency12.to=Pig
 dependency12.type=UsesDependency
 dependency13.from=Mensch
-dependency13.to=Spear
+dependency13.to=Pizza
 dependency13.type=UsesDependency
-<<<<<<< HEAD
 dependency14.from=Mensch
-dependency14.to=Pig
+dependency14.to=Cupcake
 dependency14.type=UsesDependency
 dependency15.from=Mensch
-dependency15.to=Hippo
+dependency15.to=Spear
 dependency15.type=UsesDependency
-dependency16.from=Weapon
-dependency16.to=Mensch
+dependency16.from=Mensch
+dependency16.to=Pig
 dependency16.type=UsesDependency
-dependency17.from=Food
-dependency17.to=Mensch
+dependency17.from=Mensch
+dependency17.to=Hippo
 dependency17.type=UsesDependency
+dependency18.from=Mensch
+dependency18.to=Bar
+dependency18.type=UsesDependency
+dependency19.from=Weapon
+dependency19.to=Mensch
+dependency19.type=UsesDependency
 dependency2.from=Startmenue
 dependency2.to=Help_Button
 dependency2.type=UsesDependency
+dependency20.from=Start_Button
+dependency20.to=MyWorld
+dependency20.type=UsesDependency
+dependency21.from=Food
+dependency21.to=Mensch
+dependency21.type=UsesDependency
 dependency3.from=Startmenue
 dependency3.to=Start_Button
 dependency3.type=UsesDependency
 dependency4.from=MyWorld
-dependency4.to=Gras
+dependency4.to=Bar
 dependency4.type=UsesDependency
 dependency5.from=MyWorld
-dependency5.to=Mensch
+dependency5.to=Startmenue
 dependency5.type=UsesDependency
 dependency6.from=MyWorld
-dependency6.to=Spear
+dependency6.to=Gras
 dependency6.type=UsesDependency
 dependency7.from=MyWorld
-dependency7.to=Pizza
+dependency7.to=Mensch
 dependency7.type=UsesDependency
 dependency8.from=MyWorld
-dependency8.to=Cupcake
+dependency8.to=Spear
 dependency8.type=UsesDependency
 dependency9.from=MyWorld
-dependency9.to=Hippo
-dependency9.type=UsesDependency
-<<<<<<< HEAD
-editor.fx.0.height=1056
-editor.fx.0.width=1936
-editor.fx.0.x=-32000
-editor.fx.0.y=-32000
-height=1056
-package.numDependencies=17
-package.numTargets=17
-=======
-editor.fx.0.height=1053
-editor.fx.0.width=1853
-editor.fx.0.x=67
-editor.fx.0.y=27
-height=1053
-package.numDependencies=14
-package.numTargets=12
->>>>>>> Keep spear fixed
-=======
-dependency14.from=Weapon
-dependency14.to=Mensch
-dependency14.type=UsesDependency
-dependency15.from=Food
-dependency15.to=Mensch
-dependency15.type=UsesDependency
-dependency2.from=MyWorld
-dependency2.to=Gras
-dependency2.type=UsesDependency
-dependency3.from=MyWorld
-dependency3.to=Mensch
-dependency3.type=UsesDependency
-dependency4.from=MyWorld
-dependency4.to=Spear
-dependency4.type=UsesDependency
-dependency5.from=MyWorld
-dependency5.to=Pizza
-dependency5.type=UsesDependency
-dependency6.from=MyWorld
-dependency6.to=Cupcake
-dependency6.type=UsesDependency
-dependency7.from=MyWorld
-dependency7.to=Hippo
-dependency7.type=UsesDependency
-dependency8.from=MyWorld
-dependency8.to=Pig
-dependency8.type=UsesDependency
-dependency9.from=Mensch
 dependency9.to=Pizza
 dependency9.type=UsesDependency
 editor.fx.0.height=1032
 editor.fx.0.width=960
-editor.fx.0.x=0
-editor.fx.0.y=0
-height=1056
-package.numDependencies=15
-package.numTargets=13
->>>>>>> health bar added
+editor.fx.0.x=173
+editor.fx.0.y=27
+height=1053
+package.numDependencies=21
+package.numTargets=18
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -153,74 +101,49 @@ target1.width=80
 target1.x=0
 target1.y=0
 target10.height=50
-<<<<<<< HEAD
-target10.name=Target
-=======
-target10.name=Gras
->>>>>>> health bar added
+target10.name=Bar
 target10.showInterface=false
 target10.type=ClassTarget
 target10.width=80
 target10.x=0
 target10.y=0
 target11.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
-target11.name=Button
-=======
-target11.name=Spear
->>>>>>> Keep spear fixed
-=======
-target11.name=MyWorld
->>>>>>> health bar added
+target11.name=Target
 target11.showInterface=false
 target11.type=ClassTarget
 target11.width=80
 target11.x=0
 target11.y=0
 target12.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
 target12.name=Help_Button
-=======
-target12.name=Food
->>>>>>> Keep spear fixed
-=======
-target12.name=Food
->>>>>>> health bar added
 target12.showInterface=false
 target12.type=ClassTarget
-target12.width=90
+target12.width=100
 target12.x=0
 target12.y=0
 target13.height=50
-<<<<<<< HEAD
-target13.name=Cupcake
-=======
-target13.name=Spear
->>>>>>> health bar added
+target13.name=Button
 target13.showInterface=false
 target13.type=ClassTarget
 target13.width=80
 target13.x=0
 target13.y=0
-<<<<<<< HEAD
 target14.height=50
-target14.name=Gras
+target14.name=Cupcake
 target14.showInterface=false
 target14.type=ClassTarget
 target14.width=80
 target14.x=0
 target14.y=0
 target15.height=50
-target15.name=MyWorld
+target15.name=Gras
 target15.showInterface=false
 target15.type=ClassTarget
 target15.width=80
 target15.x=0
 target15.y=0
 target16.height=50
-target16.name=Food
+target16.name=MyWorld
 target16.showInterface=false
 target16.type=ClassTarget
 target16.width=80
@@ -233,8 +156,13 @@ target17.type=ClassTarget
 target17.width=80
 target17.x=0
 target17.y=0
-=======
->>>>>>> health bar added
+target18.height=50
+target18.name=Food
+target18.showInterface=false
+target18.type=ClassTarget
+target18.width=90
+target18.x=0
+target18.y=0
 target2.height=50
 target2.name=Hippo
 target2.showInterface=false
@@ -278,36 +206,21 @@ target7.width=80
 target7.x=0
 target7.y=0
 target8.height=50
-<<<<<<< HEAD
 target8.name=Pizza
-=======
-target8.name=Bar
->>>>>>> health bar added
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=80
 target8.x=0
 target8.y=0
 target9.height=50
-<<<<<<< HEAD
 target9.name=Exit_Button
-=======
-target9.name=Cupcake
->>>>>>> health bar added
 target9.showInterface=false
 target9.type=ClassTarget
-target9.width=80
+target9.width=100
 target9.x=0
 target9.y=0
 version=3.0.0
-<<<<<<< HEAD
-width=1936
-world.lastInstantiated=Startmenue
-xPosition=-8
-yPosition=-8
-=======
 width=1853
-world.lastInstantiated=MyWorld
+world.lastInstantiated=Startmenue
 xPosition=67
 yPosition=27
->>>>>>> Keep spear fixed

@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
+import java.util.Arrays;
+import java.util.*;
 /**
  * Write a description of class MyWorld here.
  * 
@@ -8,8 +10,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    public Bar bar = new Bar("Player 1", "health Points", 25, 100);
-
+    
+    public Bar bar = new Bar("Player 1", "health Points", 100, 100);
+    public Startmenue menue = new Startmenue();
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -21,7 +25,6 @@ public class MyWorld extends World
         addObject(bar, 125, 40);
         spawn();
     }
-
     public void pflanzeGras()
     {
         for(int i=0; i<1000; i++) {
