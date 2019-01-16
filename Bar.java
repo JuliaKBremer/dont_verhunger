@@ -24,7 +24,7 @@ public class Bar extends Actor
     private int value = 0; // the current value of the bar
     private int maximumValue = 0; // the maximum value of the bar
     private int minimumValue = 0; // the minimum value of the bar
-    private String referenceText = ""; // the title string (who or what the meter/bar is for)
+    public String referenceText = ""; // the title string (who or what the meter/bar is for)
     private String unitOfMeasure = ""; // the unit of measure of the bar (any quantitative standard of measurement) 
     private boolean showTextualUnits = true; // determines whether or not the textual quantity of the bar is to show
     

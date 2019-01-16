@@ -11,9 +11,10 @@ import java.util.*;
 public class MyWorld extends World
 {
     
-    public Bar bar = new Bar("Player 1", "health Points", 100, 100);
-    public Startmenue menue = new Startmenue();
-    
+    public Bar healthbar = new Bar("Player", "health Points", 100, 100);
+    public Bar nutritionbar = new Bar("Player", "nutrition Points", 100, 100);
+    static final int worldwidth = 1000;
+    static final int worldheight = 800;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -21,14 +22,14 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 800, 1);
-        addObject(bar, 125, 40);
+        super(worldwidth, worldheight, 1);
+        System.out.println(nutritionbar.referenceText);
         spawn();
     }
     public void pflanzeGras()
     {
-        for(int i=0; i<1000; i++) {
-            for(int k=0; k<800; k++) {
+        for(int i=0; i<worldwidth; i++) {
+            for(int k=0; k<worldheight; k++) {
                 Gras gras = new Gras();
                 addObject(gras, i, k);
             }
@@ -39,40 +40,75 @@ public class MyWorld extends World
         int randomX = 0;
         int randomY = 0;
         int randomAnzahl = 0;
-
-        randomX = (int)(Math.random()*1000);
-        randomY = (int)(Math.random()*800);
-        randomAnzahl = (int)(Math.random()*10);
-
-        addObject(new Mensch(),randomX,randomY);
-        addObject(new Spear(), randomX,100);
-        for (int i = 0; i < randomAnzahl; i++ ) {
-            randomX = (int)(Math.random()*1000);
-            randomY = (int)(Math.random()*800);
+        int maxcount = 10;
+        if ((getObjects(Mensch.class)).size()<1){
+            addObject(new Mensch(),(int)(Math.random()*worldwidth),(int)(Math.random()*worldheight));
+        }
+        randomX = (int)(Math.random()*worldwidth);
+        //randomY = (int)();
+        //addObject(new Spear(), randomX,100);
+        boolean build = false;
+        for (int i = 0; i < (int)(Math.random()*5); i++ ) {
+            while (!build) {
+                randomX = (int)(Math.random()*worldwidth);
+                randomY = (int)(Math.random()*worldheight);
+                if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
+                    build = true;
+                }
+            }
             addObject(new Pizza(),randomX,randomY);
+            build = false;
         }
-        randomAnzahl = (int)(Math.random()*10);
-        for (int i = 0; i < randomAnzahl; i++ ) {
-            randomX = (int)(Math.random()*1000);
-            randomY = (int)(Math.random()*800);
+        for (int i = 0; i < (int)(Math.random()*2); i++ ) {
+            while (!build) {
+                randomX = (int)(Math.random()*worldwidth);
+                randomY = (int)(Math.random()*worldheight);
+                if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
+                    build = true;
+                }
+            }
+            addObject(new Spear(),randomX,randomY);
+            build = false;
+        }
+        
+        for (int i = 0; i < (int)(Math.random()*5); i++ ) {
+            while (!build) {
+                randomX = (int)(Math.random()*worldwidth);
+                randomY = (int)(Math.random()*worldheight);
+                if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
+                    System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
+                    build = true;
+                }
+            }
             addObject(new Cupcake(),randomX,randomY);
+            build = false;
         }
-        randomAnzahl = (int)(Math.random()*10);
-        for (int i = 0; i < randomAnzahl; i++ ) {
-            randomX = (int)(Math.random()*1000);
-            randomY = (int)(Math.random()*800);
+        
+        for (int i = 0; i < (int)(Math.random()*2); i++ ) {
+            while (!build) {
+                randomX = (int)(Math.random()*worldwidth);
+                randomY = (int)(Math.random()*worldheight);
+                if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
+                    System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
+                    build = true;
+                }
+            }
             addObject(new Hippo(),randomX,randomY);
+            build = false;
         }
-        randomAnzahl = (int)(Math.random()*10);
-        for (int i = 0; i < randomAnzahl; i++ ) {
-            randomX = (int)(Math.random()*1000);
-            randomY = (int)(Math.random()*800);
+        
+        for (int i = 0; i < (int)(Math.random()*3); i++ ) {
+            while (!build) {
+                randomX = (int)(Math.random()*worldwidth);
+                randomY = (int)(Math.random()*worldheight);
+                if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
+                    System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
+                    build = true;
+                }
+            }
             addObject(new Pig(),randomX,randomY);
+            build = false;
         }
-
-        //if (human.died == 1) {
-        //    addObject(new Died(),500,400);
-        //}
     }
     
     // public void healthbar()

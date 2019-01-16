@@ -13,12 +13,20 @@ public class Mensch extends Actor
     private final int speed = 4;
     public static int died = 0;
     public int health = 100;
-    private int nutrition = 1000;
+    private int nutrition = 100;
     public int newspawn = 0;
     private int humanX = 0;
     private int humanY = 0;
+    public Map<String,Integer> inventory = new HashMap<String, Integer>() {{
+    put("Cupcakes", 0);
+    put("Pizza", 0);
+}};
+    //System.out.println(nutritionbar.referenceText);
     public void act() 
     {
+        int fontsize = 15;
+        
+        updateHealth();
         moveNext();
         move();
         humanX = getX();
@@ -31,7 +39,8 @@ public class Mensch extends Actor
     }    
     private void move()
     {
-            if(Greenfoot.isKeyDown("up")) {
+        
+        if(Greenfoot.isKeyDown("up")) {
             setLocation(getX(), getY()-this.speed);
         }
         else if (Greenfoot.isKeyDown("down")) {
@@ -43,21 +52,30 @@ public class Mensch extends Actor
         else if (Greenfoot.isKeyDown("right")) {
             setLocation(getX()+this.speed, getY());
         }
+        if ((System.currentTimeMillis() % 20) == 0){
         nutrition -= 1;
+        }
         if (humanX > 0 && humanX < 999 && humanY > 0 && humanY < 799) {
             newspawn = 1;
         }
     }
     private void eat() {
-        if (isTouching(Pizza.class)) {
+        if (isTouching(Pizza.class))  {
             Pizza pizza=(Pizza)getOneIntersectingObject(Pizza.class);
-            nutrition += Pizza.nutrition;
-            health += 5;
+            if (nutrition+Pizza.nutrition <= 100) {nutrition += Pizza.nutrition;}
+            else health = 100;
+            if (health +5 < 100) {health+= 5;}
+            else health = 100;
         }
         else if (isTouching(Cupcake.class)) {
+            //System.out.println(inventory.get("Cupcakes"));
+            inventory.put("Cupcakes", inventory.get("Cupcakes") +1);
+            //System.out.println(inventory.get("Cupcakes"));
             Cupcake cupcake=(Cupcake)getOneIntersectingObject(Cupcake.class);
-            nutrition += Cupcake.nutrition;
-            health += 2;
+            if (nutrition+Cupcake.nutrition <= 100) {nutrition += Cupcake.nutrition;}
+            else nutrition = 100;
+            if (health +2 < 100) {health+= 2;}
+            else health = 100;
         }
         updateHealth();
     }
@@ -92,8 +110,10 @@ public class Mensch extends Actor
     }
     private void updateHealth() {
             getWorld().removeObjects(getWorld().getObjects(Bar.class));
-            Bar bar = new Bar("Player 1", "health Points", health, 100);
-            getWorld().addObject(bar, 125, 40);
+            Bar bar = new Bar("Player", "health Points", health, 100);
+            Bar nutritionbar = new Bar("Player", "nutrition Points", nutrition, 100);
+            getWorld().addObject(bar, ((MyWorld)getWorld()).worldwidth/8, ((MyWorld)getWorld()).worldheight/20);
+            getWorld().addObject(nutritionbar, ((MyWorld)getWorld()).worldwidth/2, ((MyWorld)getWorld()).worldheight/20);
     }
     /*private void heal() {
         if (nutrition >= 400 && health < 100) {
@@ -152,29 +172,7 @@ public class Mensch extends Actor
                 this.setLocation(humanX, 0);
             }
             getWorld().addObject(new Spear(), randomX,randomY);
-            for (int i = 0; i < randomAnzahl; i++ ) {
-                randomX = (int)(Math.random()*1000);
-                randomY = (int)(Math.random()*800);
-                getWorld().addObject(new Pizza(),randomX,randomY);
-            }
-            randomAnzahl = (int)(Math.random()*10);
-            for (int i = 0; i < randomAnzahl; i++ ) {
-                randomX = (int)(Math.random()*1000);
-                randomY = (int)(Math.random()*800);
-                getWorld().addObject(new Cupcake(),randomX,randomY);
-            }
-            randomAnzahl = (int)(Math.random()*10);
-            for (int i = 0; i < randomAnzahl; i++ ) {
-                randomX = (int)(Math.random()*1000);
-                randomY = (int)(Math.random()*800);
-                getWorld().addObject(new Hippo(),randomX,randomY);
-            }
-            randomAnzahl = (int)(Math.random()*10);
-            for (int i = 0; i < randomAnzahl; i++ ) {
-                randomX = (int)(Math.random()*1000);
-                randomY = (int)(Math.random()*800);
-                getWorld().addObject(new Pig(),randomX,randomY);
-            }
+            ((MyWorld)getWorld()).spawn();
             newspawn = 0;
         }
     }
