@@ -1,12 +1,9 @@
 #Greenfoot project file
-<<<<<<< HEAD
+class.Arrow.image=icons8-archers-arrow-filled-100.png
 class.Banana.image=Banana_icon-icons.com_68789.png
 class.Beer.image=Beer_icon-icons.com_68783.png
-class.Cheese.image=Cheese_icon-icons.com_68771.png
-=======
-class.Arrow.image=icons8-archers-arrow-filled-100.png
 class.Bow.image=icons8-archers-bow-filled-100.png
->>>>>>> arrow and bow added
+class.Cheese.image=Cheese_icon-icons.com_68771.png
 class.Cupcake.image=muffin.png
 class.Died.image=skull.png
 class.Dog.image=22215dog_98826.png
@@ -24,17 +21,6 @@ class.Pig.image=pig.png
 class.Pizza.image=pizza_cheese.png
 class.Spear.image=spear.png
 class.Startmenue.image=bluerock.jpg
-<<<<<<< HEAD
-dependency1.from=Startmenue
-dependency1.to=Exit_Button
-dependency1.type=UsesDependency
-dependency10.from=MyWorld
-dependency10.to=Hippo
-dependency10.type=UsesDependency
-dependency11.from=MyWorld
-dependency11.to=Pig
-<<<<<<< HEAD
-=======
 class.Sword.image=2730363-game-inkcontober-steal-sword-tools-weapon_112708.png
 class.Water.image=Bottle_of_Water_icon-icons.com_68778.png
 class.Werewolf.image=Werewolf_37493.png
@@ -46,9 +32,6 @@ dependency10.to=Help_Button
 dependency10.type=UsesDependency
 dependency11.from=Startmenue
 dependency11.to=Start_Button
->>>>>>> MORE MORE MORE
-=======
->>>>>>> arrow and bow added
 dependency11.type=UsesDependency
 dependency12.from=Mensch
 dependency12.to=Pizza
@@ -65,8 +48,6 @@ dependency15.type=UsesDependency
 dependency16.from=Mensch
 dependency16.to=Hippo
 dependency16.type=UsesDependency
-<<<<<<< HEAD
-<<<<<<< HEAD
 dependency17.from=Mensch
 dependency17.to=Bar
 dependency17.type=UsesDependency
@@ -74,19 +55,10 @@ dependency18.from=Mensch
 dependency18.to=MyWorld
 dependency18.type=UsesDependency
 dependency19.from=Weapon
-=======
-dependency17.from=Weapon
-dependency17.to=Mensch
-dependency17.type=UsesDependency
-dependency18.from=Start_Button
-dependency18.to=MyWorld
-dependency18.type=UsesDependency
-dependency19.from=Food
->>>>>>> arrow and bow added
 dependency19.to=Mensch
 dependency19.type=UsesDependency
-dependency2.from=Startmenue
-dependency2.to=Help_Button
+dependency2.from=MyWorld
+dependency2.to=Gras
 dependency2.type=UsesDependency
 dependency20.from=Hippo
 dependency20.to=Mensch
@@ -97,59 +69,14 @@ dependency21.type=UsesDependency
 dependency22.from=Food
 dependency22.to=Mensch
 dependency22.type=UsesDependency
-dependency3.from=Startmenue
-dependency3.to=Start_Button
-dependency3.type=UsesDependency
-dependency4.from=MyWorld
-dependency4.to=Bar
-dependency4.type=UsesDependency
-dependency5.from=MyWorld
-dependency5.to=Gras
-dependency5.type=UsesDependency
-dependency6.from=MyWorld
-dependency6.to=Mensch
-dependency6.type=UsesDependency
-dependency7.from=MyWorld
-dependency7.to=Spear
-dependency7.type=UsesDependency
-dependency8.from=MyWorld
-<<<<<<< HEAD
-dependency8.to=Spear
-dependency8.type=UsesDependency
-dependency9.from=MyWorld
-dependency9.to=Cupcake
-dependency9.type=UsesDependency
-editor.fx.0.height=1053
-editor.fx.0.width=1853
-editor.fx.0.x=67
-editor.fx.0.y=27
-height=1053
-package.numDependencies=22
-package.numTargets=18
-=======
-dependency17.from=Weapon
-dependency17.to=Mensch
-dependency17.type=UsesDependency
-dependency18.from=Hippo
-dependency18.to=Mensch
-dependency18.type=UsesDependency
-dependency19.from=Start_Button
-dependency19.to=MyWorld
-dependency19.type=UsesDependency
-dependency2.from=MyWorld
-dependency2.to=Gras
-dependency2.type=UsesDependency
-dependency20.from=Food
-dependency20.to=Mensch
-dependency20.type=UsesDependency
 dependency3.from=MyWorld
 dependency3.to=Mensch
 dependency3.type=UsesDependency
 dependency4.from=MyWorld
-dependency4.to=Spear
+dependency4.to=Pizza
 dependency4.type=UsesDependency
 dependency5.from=MyWorld
-dependency5.to=Pizza
+dependency5.to=Spear
 dependency5.type=UsesDependency
 dependency6.from=MyWorld
 dependency6.to=Cupcake
@@ -162,27 +89,14 @@ dependency8.to=Pig
 dependency8.type=UsesDependency
 dependency9.from=Startmenue
 dependency9.to=Exit_Button
-=======
-dependency8.to=Pizza
-dependency8.type=UsesDependency
-dependency9.from=MyWorld
-dependency9.to=Cupcake
->>>>>>> arrow and bow added
 dependency9.type=UsesDependency
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
-<<<<<<< HEAD
-height=1056
-package.numDependencies=20
-package.numTargets=31
->>>>>>> MORE MORE MORE
-=======
 height=1050
-package.numDependencies=19
-package.numTargets=20
->>>>>>> arrow and bow added
+package.numDependencies=22
+package.numTargets=33
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -198,58 +112,27 @@ readme.x=10
 readme.y=10
 simulation.speed=49
 target1.height=50
-<<<<<<< HEAD
 target1.name=Water
-=======
-target1.name=Arrow
->>>>>>> arrow and bow added
 target1.showInterface=false
 target1.type=ClassTarget
 target1.width=80
 target1.x=0
 target1.y=0
 target10.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
-target10.name=Bar
-=======
 target10.name=Target
->>>>>>> MORE MORE MORE
-=======
-target10.name=Pizza
->>>>>>> arrow and bow added
 target10.showInterface=false
 target10.type=ClassTarget
-target10.width=80
+target10.width=90
 target10.x=0
 target10.y=0
 target11.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
-target11.name=Target
-=======
 target11.name=Sword
->>>>>>> MORE MORE MORE
-=======
-target11.name=Exit_Button
->>>>>>> arrow and bow added
 target11.showInterface=false
 target11.type=ClassTarget
-target11.width=100
+target11.width=80
 target11.x=0
 target11.y=0
 target12.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
-target12.name=Help_Button
-target12.showInterface=false
-target12.type=ClassTarget
-target12.width=100
-target12.x=0
-target12.y=0
-target13.height=50
-target13.name=Button
-=======
 target12.name=Button
 target12.showInterface=false
 target12.type=ClassTarget
@@ -258,58 +141,27 @@ target12.x=0
 target12.y=0
 target13.height=50
 target13.name=Help_Button
->>>>>>> MORE MORE MORE
-=======
-target12.name=Bar
-target12.showInterface=false
-target12.type=ClassTarget
-target12.width=80
-target12.x=0
-target12.y=0
-target13.height=50
-target13.name=Target
->>>>>>> arrow and bow added
 target13.showInterface=false
 target13.type=ClassTarget
-target13.width=90
+target13.width=110
 target13.x=0
 target13.y=0
 target14.height=50
-<<<<<<< HEAD
 target14.name=Cupcake
-=======
-target14.name=Button
->>>>>>> arrow and bow added
 target14.showInterface=false
 target14.type=ClassTarget
 target14.width=80
 target14.x=0
 target14.y=0
 target15.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
-target15.name=Gras
-=======
-target15.name=Werewolf
->>>>>>> MORE MORE MORE
-=======
-target15.name=Help_Button
->>>>>>> arrow and bow added
+target15.name=Hatchet
 target15.showInterface=false
 target15.type=ClassTarget
-target15.width=110
+target15.width=80
 target15.x=0
 target15.y=0
 target16.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
-target16.name=MyWorld
-=======
-target16.name=Hatchet
->>>>>>> MORE MORE MORE
-=======
-target16.name=Cupcake
->>>>>>> arrow and bow added
+target16.name=Werewolf
 target16.showInterface=false
 target16.type=ClassTarget
 target16.width=80
@@ -323,233 +175,175 @@ target17.width=80
 target17.x=0
 target17.y=0
 target18.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
-target18.name=Food
-target18.showInterface=false
-target18.type=ClassTarget
-target18.width=90
-target18.x=0
-target18.y=0
-=======
 target18.name=Dog
-=======
-target18.name=MyWorld
->>>>>>> arrow and bow added
 target18.showInterface=false
 target18.type=ClassTarget
 target18.width=80
 target18.x=0
 target18.y=0
 target19.height=50
-<<<<<<< HEAD
 target19.name=MyWorld
 target19.showInterface=false
 target19.type=ClassTarget
 target19.width=80
 target19.x=0
 target19.y=0
->>>>>>> MORE MORE MORE
-=======
-target19.name=Food
-target19.showInterface=false
-target19.type=ClassTarget
-target19.width=90
-target19.x=0
-target19.y=0
->>>>>>> arrow and bow added
 target2.height=50
-target2.name=Died
+target2.name=Hippo
 target2.showInterface=false
 target2.type=ClassTarget
 target2.width=80
 target2.x=0
 target2.y=0
 target20.height=50
-<<<<<<< HEAD
 target20.name=Food
-=======
-target20.name=Spear
->>>>>>> arrow and bow added
 target20.showInterface=false
 target20.type=ClassTarget
-target20.width=80
+target20.width=90
 target20.x=0
 target20.y=0
-<<<<<<< HEAD
 target21.height=50
-target21.name=Fea
+target21.name=Arrow
 target21.showInterface=false
 target21.type=ClassTarget
 target21.width=80
 target21.x=0
 target21.y=0
 target22.height=50
-target22.name=Lightsaber_red
+target22.name=Fea
 target22.showInterface=false
 target22.type=ClassTarget
-target22.width=100
+target22.width=80
 target22.x=0
 target22.y=0
 target23.height=50
-target23.name=Died
+target23.name=Lightsaber_red
 target23.showInterface=false
 target23.type=ClassTarget
-target23.width=80
+target23.width=100
 target23.x=0
 target23.y=0
 target24.height=50
-target24.name=Startmenue
+target24.name=Died
 target24.showInterface=false
 target24.type=ClassTarget
-target24.width=90
+target24.width=80
 target24.x=0
 target24.y=0
 target25.height=50
-target25.name=Start_Button
+target25.name=Startmenue
 target25.showInterface=false
 target25.type=ClassTarget
-target25.width=90
+target25.width=80
 target25.x=0
 target25.y=0
 target26.height=50
-target26.name=Enton
+target26.name=Start_Button
 target26.showInterface=false
 target26.type=ClassTarget
-target26.width=80
+target26.width=90
 target26.x=0
 target26.y=0
 target27.height=50
-target27.name=Pig
+target27.name=Enton
 target27.showInterface=false
 target27.type=ClassTarget
 target27.width=80
 target27.x=0
 target27.y=0
 target28.height=50
-target28.name=Banana
+target28.name=Bow
 target28.showInterface=false
 target28.type=ClassTarget
 target28.width=80
 target28.x=0
 target28.y=0
 target29.height=50
-target29.name=Pizza
+target29.name=Banana
 target29.showInterface=false
 target29.type=ClassTarget
 target29.width=80
 target29.x=0
 target29.y=0
 target3.height=50
-target3.name=Mensch
-=======
-target3.height=50
-target3.name=Hippo
->>>>>>> arrow and bow added
+target3.name=Cheese
 target3.showInterface=false
 target3.type=ClassTarget
 target3.width=80
 target3.x=0
 target3.y=0
 target30.height=50
-target30.name=Bar
+target30.name=Pig
 target30.showInterface=false
 target30.type=ClassTarget
-target30.width=80
+target30.width=100
 target30.x=0
 target30.y=0
 target31.height=50
-target31.name=Spear
+target31.name=Pizza
 target31.showInterface=false
 target31.type=ClassTarget
 target31.width=80
 target31.x=0
 target31.y=0
+target32.height=50
+target32.name=Bar
+target32.showInterface=false
+target32.type=ClassTarget
+target32.width=80
+target32.x=0
+target32.y=0
+target33.height=50
+target33.name=Spear
+target33.showInterface=false
+target33.type=ClassTarget
+target33.width=80
+target33.x=0
+target33.y=0
 target4.height=50
-<<<<<<< HEAD
-target4.name=Cheese
-=======
-target4.name=Startmenue
->>>>>>> arrow and bow added
+target4.name=Lightsaber_blue
 target4.showInterface=false
 target4.type=ClassTarget
-target4.width=80
+target4.width=110
 target4.x=0
 target4.y=0
 target5.height=50
-<<<<<<< HEAD
-target5.name=Lightsaber_blue
+target5.name=Mensch
 target5.showInterface=false
 target5.type=ClassTarget
-target5.width=110
-=======
-target5.name=Start_Button
-target5.showInterface=false
-target5.type=ClassTarget
-target5.width=90
->>>>>>> arrow and bow added
+target5.width=80
 target5.x=0
 target5.y=0
 target6.height=50
-target6.name=Mensch
+target6.name=Dragon
 target6.showInterface=false
 target6.type=ClassTarget
 target6.width=80
 target6.x=0
 target6.y=0
 target7.height=50
-<<<<<<< HEAD
-target7.name=Dragon
-=======
-target7.name=Bow
->>>>>>> arrow and bow added
+target7.name=Weapon
 target7.showInterface=false
 target7.type=ClassTarget
 target7.width=80
 target7.x=0
 target7.y=0
 target8.height=50
-<<<<<<< HEAD
-<<<<<<< HEAD
-target8.name=Pizza
-=======
 target8.name=Beer
->>>>>>> MORE MORE MORE
-=======
-target8.name=Weapon
->>>>>>> arrow and bow added
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=80
 target8.x=0
 target8.y=0
 target9.height=50
-<<<<<<< HEAD
 target9.name=Exit_Button
-=======
-target9.name=Pig
->>>>>>> arrow and bow added
 target9.showInterface=false
 target9.type=ClassTarget
 target9.width=100
 target9.x=0
 target9.y=0
 version=3.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-width=1853
-world.lastInstantiated=Startmenue
-xPosition=67
-yPosition=27
-=======
-width=1936
-world.lastInstantiated=Startmenue
-xPosition=-8
-yPosition=-8
->>>>>>> MORE MORE MORE
-=======
 width=1938
 world.lastInstantiated=MyWorld
 xPosition=-9
 yPosition=-9
->>>>>>> arrow and bow added
