@@ -23,8 +23,9 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(worldwidth, worldheight, 1);
-        System.out.println(nutritionbar.referenceText);
+        //System.out.println(nutritionbar.referenceText);
         spawn();
+        inventory();
     }
     public void pflanzeGras()
     {
@@ -59,6 +60,17 @@ public class MyWorld extends World
             addObject(new Pizza(),randomX,randomY);
             build = false;
         }
+        for (int i = 0; i < (int)(Math.random()*5); i++ ) {
+            while (!build) {
+                randomX = (int)(Math.random()*worldwidth);
+                randomY = (int)(Math.random()*worldheight);
+                if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
+                    build = true;
+                }
+            }
+            addObject(new Banana(),randomX,randomY);
+            build = false;
+        }
         for (int i = 0; i < (int)(Math.random()*2); i++ ) {
             while (!build) {
                 randomX = (int)(Math.random()*worldwidth);
@@ -76,7 +88,7 @@ public class MyWorld extends World
                 randomX = (int)(Math.random()*worldwidth);
                 randomY = (int)(Math.random()*worldheight);
                 if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
-                    System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
+                    //System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
                     build = true;
                 }
             }
@@ -89,7 +101,7 @@ public class MyWorld extends World
                 randomX = (int)(Math.random()*worldwidth);
                 randomY = (int)(Math.random()*worldheight);
                 if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
-                    System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
+                    //System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
                     build = true;
                 }
             }
@@ -102,12 +114,27 @@ public class MyWorld extends World
                 randomX = (int)(Math.random()*worldwidth);
                 randomY = (int)(Math.random()*worldheight);
                 if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
-                    System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
+                    //System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
                     build = true;
                 }
             }
             addObject(new Pig(),randomX,randomY);
             build = false;
+        }
+    }
+    public void inventory() {
+        int invX = 90;
+        int invY = 750;
+        int textX =105;
+        int textY = 735;
+        int number = 1;
+        
+        for (int i = 0; i < 10; i++) {
+            addObject(new Inventory(), invX, invY);
+            showText(Integer.toString(number), textX, textY);
+            invX += 90;
+            textX += 90;
+            number += 1;
         }
     }
     

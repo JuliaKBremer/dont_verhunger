@@ -15,6 +15,7 @@ public class Spear extends Weapon
         stick();
     } 
     private void scale() {
+        
         GreenfootImage spear = new GreenfootImage("spear.png");
         GreenfootImage image = new GreenfootImage(spear);
         image.scale(30,30);

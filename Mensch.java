@@ -17,9 +17,14 @@ public class Mensch extends Actor
     public int newspawn = 0;
     private int humanX = 0;
     private int humanY = 0;
+    public String put_in_inventory = "";
     public Map<String,Integer> inventory = new HashMap<String, Integer>() {{
     put("Cupcakes", 0);
     put("Pizza", 0);
+    put("Banana", 0);
+    put("Beer", 0);
+    put("Cheese", 0);
+    put("Water", 0);
 }};
     //System.out.println(nutritionbar.referenceText);
     public void act() 
@@ -62,9 +67,13 @@ public class Mensch extends Actor
     private void eat() {
         if (isTouching(Pizza.class))  {
             Pizza pizza=(Pizza)getOneIntersectingObject(Pizza.class);
-            if (nutrition+Pizza.nutrition <= 100) {nutrition += Pizza.nutrition;}
-            else health = 100;
-            if (health +5 < 100) {health+= 5;}
+            if (nutrition+Pizza.nutrition <= 100) {
+                nutrition += Pizza.nutrition;
+            }
+            else nutrition = 100;
+            if (health +5 < 100) {
+                health+= 5;
+            }
             else health = 100;
         }
         else if (isTouching(Cupcake.class)) {
@@ -72,10 +81,34 @@ public class Mensch extends Actor
             inventory.put("Cupcakes", inventory.get("Cupcakes") +1);
             //System.out.println(inventory.get("Cupcakes"));
             Cupcake cupcake=(Cupcake)getOneIntersectingObject(Cupcake.class);
-            if (nutrition+Cupcake.nutrition <= 100) {nutrition += Cupcake.nutrition;}
+            if (nutrition+Cupcake.nutrition <= 100) {
+                nutrition += Cupcake.nutrition;
+            }
             else nutrition = 100;
-            if (health +2 < 100) {health+= 2;}
-            else health = 100;
+            if (health +2 < 100) {
+                health+= 2;
+            }
+            else {
+                health = 100;
+            }
+        }
+        else if (isTouching(Banana.class)) {
+            //System.out.println(inventory.get("Cupcakes"));
+            inventory.put("Banana", inventory.get("Banana") +1);
+            //System.out.println(inventory.get("Cupcakes"));
+            Banana cupcake=(Banana)getOneIntersectingObject(Banana.class);
+            if (nutrition+Banana.nutrition <= 100) {
+                nutrition += Banana.nutrition;
+            }
+            else {
+                nutrition = 100;
+            }
+            if (health +2 < 100) {
+                health+= 2;
+            }
+            else {
+                health = 100;
+            }
         }
         updateHealth();
     }
@@ -104,7 +137,7 @@ public class Mensch extends Actor
     private void demage() {
         if (isTouching(Hippo.class)) {
             Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
-            health -= 5;
+            health -= 2;
             updateHealth();
         }
     }
@@ -122,16 +155,28 @@ public class Mensch extends Actor
         }
     }*/
     public void moveNext() {
-       
         if (newspawn == 1) {
             if (humanX <= 0 || humanX >= 999 || humanY <= 0 || humanY >= 799) {
                 getWorld().removeObjects(getWorld().getObjects(Hippo.class));
                 getWorld().removeObjects(getWorld().getObjects(Pizza.class));
                 getWorld().removeObjects(getWorld().getObjects(Cupcake.class));
                 getWorld().removeObjects(getWorld().getObjects(Pig.class));
+                
                 for (Spear spear : getWorld().getObjects(Spear.class)){
-                    if (!(spear.getX() == getX() && spear.getY() == getY())){
+                    boolean to_remove =true;
+                    for (Inventory inventory : getWorld().getObjects(Inventory.class)){
+                        System.out.println(spear.getX() - inventory.getX());
+                            if ((spear.getX() == inventory.getX() && spear.getY() == inventory.getY()) ||  (spear.getX() == getX() && spear.getY() == getY())){
+                                to_remove =false;
+ 
+                            //
+                        }
+                        
+                    }
+                    if (to_remove){
                         getWorld().removeObject(spear);
+                        System.out.println("removed");
+                        //to_remove =true;
                     }
                 }
                 spawn();
