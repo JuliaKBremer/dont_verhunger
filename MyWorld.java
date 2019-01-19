@@ -13,8 +13,8 @@ public class MyWorld extends World
     
     public Bar healthbar = new Bar("Player", "health Points", 100, 100);
     public Bar nutritionbar = new Bar("Player", "nutrition Points", 100, 100);
-    static final int worldwidth = 1000;
-    static final int worldheight = 800;
+    static final int worldwidth = 800;
+    static final int worldheight = 400;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -82,7 +82,7 @@ public class MyWorld extends World
             addObject(new Spear(),randomX,randomY);
             build = false;
         }
-        for (int i = 0; i < (int)(Math.random()*2); i++ ) {
+        for (int i = 0; i < (int)(Math.random()*5); i++ ) {
             while (!build) {
                 randomX = (int)(Math.random()*worldwidth);
                 randomY = (int)(Math.random()*worldheight);
@@ -133,10 +133,10 @@ public class MyWorld extends World
         }
     }
     public void inventory() {
-        int invX = 90;
-        int invY = 750;
-        int textX =105;
-        int textY = 735;
+        int invX = worldwidth/10;
+        int invY = worldheight- 20;
+        int textX =worldwidth/10 +20;
+        int textY = worldheight-10;
         //int number = 1;
         
         for (int i = 0; i < 10; i++) {
@@ -144,8 +144,8 @@ public class MyWorld extends World
             Inventory.boxes[i] = inventory;
             addObject(inventory, invX, invY);
             showText(Integer.toString(i+1), textX, textY);
-            invX += 90;
-            textX += 90;
+            invX += worldwidth/12;
+            textX += worldwidth/12;
         }
     }
     

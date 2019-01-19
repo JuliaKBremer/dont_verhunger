@@ -13,12 +13,10 @@ public class Spear extends Weapon
     {
         scale();
         stick();
-        collect();
+        //collect();
     } 
     private void scale() {
-        
-        GreenfootImage spear = new GreenfootImage("spear.png");
-        GreenfootImage image = new GreenfootImage(spear);
+        GreenfootImage image = this.getImage();
         image.scale(30,30);
         setImage(image);
     }

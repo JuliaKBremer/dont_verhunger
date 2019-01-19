@@ -15,43 +15,45 @@ public class Mensch extends Actor
     public static int died = 0;
     public int health = 100;
     private int nutrition = 100;
-    public int newspawn = 0;
+    public boolean newspawn = false;
     private int humanX = 0;
     private int humanY = 0;
     public Actor equipped = null;  
-    public String put_in_inventory = "";
     Actor[][] inventory = new Actor[10][10]; 
     //System.out.println(nutritionbar.referenceText);
     public void act() 
     {
         int fontsize = 15;
-        
         updateHealth();
         moveNext();
         move();
         humanX = getX();
         humanY = getY();
         collect();
-
         if ((System.currentTimeMillis() % 5) == 0){
             get_from_inventory();
         }
         attack();
         demage();
-        //heal();
         die();
     }
     private void collect() {
-        List list;
+        List <Weapon> list;
         list = getWorld().getObjectsAt(getX(), getY(), Weapon.class);
+        boolean collected = false;
         if (isTouching(Food.class)) {
             Food food =(Food)getOneIntersectingObject(Food.class);
             put_in_inventory(food);
         }
         else if ( isTouching(Weapon.class) && equipped != null){
-            Weapon weapon =(Weapon)getOneIntersectingObject(Weapon.class);
-            if (weapon != equipped) {
-                put_in_inventory(weapon);
+            for (Weapon weapon : list) {
+                if (weapon != equipped) {
+                    System.out.println("notsame");
+                    put_in_inventory(weapon);
+                    getWorld().removeObject(weapon);
+                    collected = true;
+                }
+                if (collected) break;
             }
         }
         
@@ -79,10 +81,10 @@ public class Mensch extends Actor
             setLocation(getX()+this.speed, getY());
         }
         if ((System.currentTimeMillis() % 20) == 0){
-        nutrition -= 1;
+            nutrition -= 1;
         }
-        if (humanX > 0 && humanX < 999 && humanY > 0 && humanY < 799) {
-            newspawn = 1;
+        if (humanX > 0|| humanX < ((MyWorld)getWorld()).worldwidth -1 || humanY > 0 || humanY < ((MyWorld)getWorld()).worldheight -1) {
+            newspawn = true;
         }
         if (equipped != null) {
             equipped.setLocation(getX(), getY());
@@ -110,6 +112,7 @@ public class Mensch extends Actor
         }
         if (item instanceof Weapon) {
             put_in_inventory(equipped);
+            getWorld().removeObject(equipped);
             equipped = item;
             getWorld().addObject(equipped, getX(), getY());
         }
@@ -129,7 +132,7 @@ public class Mensch extends Actor
         for (int j = 9; j>= 0; j --) {
             if ((inventory[i-1][j] != null)) {
                 inventory[i-1][j] = null;
-                System.out.println("removed");
+                //System.out.println("removed");
                 removed =true;
                 if (j == 0) {
                     Inventory.boxes[i-1].getItem(i);
@@ -172,16 +175,15 @@ public class Mensch extends Actor
     }
     private void attack() {
         if(Greenfoot.isKeyDown("space")) {
-            if (isTouching(Spear.class)) {
-                Spear spear=(Spear)getOneIntersectingObject(Spear.class);
+            if (equipped != null) {
                 //spear.setImage(""); <-- Neues Image bei angriff!
                 if (isTouching(Pig.class)) {
                     Pig pig=(Pig)getOneIntersectingObject(Pig.class);
-                    pig.health -= 10;
+                    pig.health -= ((Weapon)equipped).damage;
                 }
                 else if (isTouching(Hippo.class)) {
                     Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
-                    hippo.health -= 10;
+                    hippo.health -= ((Weapon)equipped).damage;
                 }
             }
         }
@@ -198,76 +200,46 @@ public class Mensch extends Actor
             Bar bar = new Bar("Player", "health Points", health, 100);
             Bar nutritionbar = new Bar("Player", "nutrition Points", nutrition, 100);
             getWorld().addObject(bar, ((MyWorld)getWorld()).worldwidth/8, ((MyWorld)getWorld()).worldheight/20);
-            getWorld().addObject(nutritionbar, ((MyWorld)getWorld()).worldwidth/2, ((MyWorld)getWorld()).worldheight/20);
+            getWorld().addObject(nutritionbar, ((MyWorld)getWorld()).worldwidth/8 *5, ((MyWorld)getWorld()).worldheight/20);
     }
-    /*private void heal() {
-        if (nutrition >= 400 && health < 100) {
-            health += 2;
-            updateHealth();
-        }
-    }*/
+
     public void moveNext() {
-        if (newspawn == 1) {
-            if (humanX <= 0 || humanX >= 999 || humanY <= 0 || humanY >= 799) {
-                getWorld().removeObjects(getWorld().getObjects(Hippo.class));
-                getWorld().removeObjects(getWorld().getObjects(Pizza.class));
-                getWorld().removeObjects(getWorld().getObjects(Cupcake.class));
-                getWorld().removeObjects(getWorld().getObjects(Pig.class));
-                
-                for (Spear spear : getWorld().getObjects(Spear.class)){
-                    boolean to_remove =true;
-                    for (Inventory inventory : getWorld().getObjects(Inventory.class)){
-                        System.out.println(spear.getX() - inventory.getX());
-                            if (((spear.getX() == inventory.getX() && spear.getY() == inventory.getY())) != ( (spear.getX() == getX() && spear.getY() == getY()))){
-                                to_remove =false;
-                        }
-                    }
-                    if (to_remove){
-                        getWorld().removeObject(spear);
-                        System.out.println("removed");
-                        //to_remove =true;
+        if (newspawn){
+            if (humanX <= 1 || humanX >= ((MyWorld)getWorld()).worldwidth -1 || humanY <= 1 || humanY >= ((MyWorld)getWorld()).worldheight -1) {
+                getWorld().removeObjects(getWorld().getObjects(Food.class));
+                getWorld().removeObjects(getWorld().getObjects(Target.class));
+                for ( Weapon weapon : getWorld().getObjects(Weapon.class)) {
+                    if (weapon != equipped) {
+                        getWorld().removeObject(weapon);
                     }
                 }
                 spawn();
             }
-        }
+    }
     }
     public void spawn() {
         int randomX = 0;
         int randomY = 0;
         int randomAnzahl = 0;
-        
-        randomX = (int)(Math.random()*1000);
-        randomY = (int)(Math.random()*800);
+        System.out.println("spawn");
+        randomX = (int)(Math.random()*((MyWorld)getWorld()).worldwidth);
+        randomY = (int)(Math.random()*((MyWorld)getWorld()).worldheight);
         randomAnzahl = (int)(Math.random()*10);
-        if (newspawn == 1) {
-            if (humanX <= 1) {
-                if (isTouching(Spear.class)) {
-                    getWorld().addObject(new Spear(), 999,humanY);
-                }
-                this.setLocation(999, humanY);
-            }
-            else if (humanX >= 999) {
-                if (isTouching(Spear.class)) {
-                    getWorld().addObject(new Spear(), 0, humanY);
-                }
-                this.setLocation(0, humanY);
-            }
-            if (humanY <= 1) {
-                if (isTouching(Spear.class)) {
-                    getWorld().addObject(new Spear(), humanX,799);
-                }
-                this.setLocation(humanX, 799);
-            }
-            else if (humanY >= 799) {
-                if (isTouching(Spear.class)) {
-                    getWorld().addObject(new Spear(), humanX,0);
-                }
-                this.setLocation(humanX, 0);
-            }
-            getWorld().addObject(new Spear(), randomX,randomY);
-            ((MyWorld)getWorld()).spawn();
-            newspawn = 0;
+        if (humanX <= 1) {
+            this.setLocation(((MyWorld)getWorld()).worldwidth -2, humanY);
         }
+        else if (humanX >= ((MyWorld)getWorld()).worldwidth -1) {
+            this.setLocation(0, humanY);
+        }
+        if (humanY <= 1) {
+            this.setLocation(humanX, ((MyWorld)getWorld()).worldheight -1);
+        }
+        else if (humanY >= ((MyWorld)getWorld()).worldheight -2) {
+            this.setLocation(humanX, 2);
+        }
+        getWorld().addObject(new Spear(), randomX,randomY);
+        ((MyWorld)getWorld()).spawn();
+        newspawn =  false;
+        
     }
 }

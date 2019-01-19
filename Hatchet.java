@@ -14,8 +14,15 @@ public class Hatchet extends Weapon
      */
     public void act() 
     {
+        scale();
         stick();
-        collect();
+        
+        //collect();
         // Add your action code here.
-    }    
+    }
+    private void scale() {
+        GreenfootImage image = this.getImage();
+        image.scale(30,30);
+        setImage(image);
+    }
 }
