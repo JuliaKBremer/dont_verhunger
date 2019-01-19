@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Food extends Actor
 {
+    public static final int nutrition = 100;
     /**
      * Act - do whatever the Food wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,7 +16,7 @@ public class Food extends Actor
     public void act() 
     {
         eaten();
-    }    
+    } 
     public void eaten() {
         if (isTouching(Mensch.class)) {
             Mensch human=(Mensch)getOneIntersectingObject(Mensch.class);

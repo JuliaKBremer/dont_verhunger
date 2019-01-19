@@ -82,7 +82,17 @@ public class MyWorld extends World
             addObject(new Spear(),randomX,randomY);
             build = false;
         }
-        
+        for (int i = 0; i < (int)(Math.random()*2); i++ ) {
+            while (!build) {
+                randomX = (int)(Math.random()*worldwidth);
+                randomY = (int)(Math.random()*worldheight);
+                if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
+                    build = true;
+                }
+            }
+            addObject(new Hatchet(),randomX,randomY);
+            build = false;
+        }
         for (int i = 0; i < (int)(Math.random()*5); i++ ) {
             while (!build) {
                 randomX = (int)(Math.random()*worldwidth);
@@ -96,7 +106,7 @@ public class MyWorld extends World
             build = false;
         }
         
-        for (int i = 0; i < (int)(Math.random()*2); i++ ) {
+        for (int i = 0; i < (int)(Math.random()*1); i++ ) {
             while (!build) {
                 randomX = (int)(Math.random()*worldwidth);
                 randomY = (int)(Math.random()*worldheight);
@@ -127,14 +137,15 @@ public class MyWorld extends World
         int invY = 750;
         int textX =105;
         int textY = 735;
-        int number = 1;
+        //int number = 1;
         
         for (int i = 0; i < 10; i++) {
-            addObject(new Inventory(), invX, invY);
-            showText(Integer.toString(number), textX, textY);
+            Inventory inventory = new Inventory();
+            Inventory.boxes[i] = inventory;
+            addObject(inventory, invX, invY);
+            showText(Integer.toString(i+1), textX, textY);
             invX += 90;
             textX += 90;
-            number += 1;
         }
     }
     

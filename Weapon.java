@@ -12,13 +12,35 @@ public class Weapon extends Actor
      * Act - do whatever the Weapon wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public int damage = 10;
     public void act() 
     {
+        stick();
+        collect();
+    }
+    public void collect() {
         
-    }    
+        if (isTouching(Mensch.class)) {
+            Mensch human=(Mensch)getOneIntersectingObject(Mensch.class);
+            if (this != human.equipped) {
+                getWorld().removeObject(this);
+            }
+        }
+    }
     public void stick() {
-        Mensch human=(Mensch)getOneIntersectingObject(Mensch.class);
-        for (Inventory inventory : getWorld().getObjects(Inventory.class)){
+        if (isTouching(Mensch.class)) {
+            Mensch human=(Mensch)getOneIntersectingObject(Mensch.class);
+            if (human.equipped == null){   
+                human.equipped = this;
+                this.setLocation(human.getX(), human.getY());
+            }
+            
+        }
+        /*Mensch human=(Mensch)getOneIntersectingObject(Mensch.class);
+        if (human.eqipped == null) {
+            image = getImage();
+        }*/
+        /*for (Inventory inventory : getWorld().getObjects(Inventory.class)){
             int invX = inventory.getX();
             int invY = inventory.getY();
             for (Spear spear : getWorld().getObjects(Spear.class)){
@@ -34,6 +56,6 @@ public class Weapon extends Actor
                     }
                 }
             }
-        }
+        }*/
     }
 }

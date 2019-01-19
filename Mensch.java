@@ -1,3 +1,4 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 import java.util.Arrays;
@@ -17,15 +18,9 @@ public class Mensch extends Actor
     public int newspawn = 0;
     private int humanX = 0;
     private int humanY = 0;
+    public Actor equipped = null;  
     public String put_in_inventory = "";
-    public Map<String,Integer> inventory = new HashMap<String, Integer>() {{
-    put("Cupcakes", 0);
-    put("Pizza", 0);
-    put("Banana", 0);
-    put("Beer", 0);
-    put("Cheese", 0);
-    put("Water", 0);
-}};
+    Actor[][] inventory = new Actor[10][10]; 
     //System.out.println(nutritionbar.referenceText);
     public void act() 
     {
@@ -36,12 +31,38 @@ public class Mensch extends Actor
         move();
         humanX = getX();
         humanY = getY();
-        eat();
+        collect();
+
+        if ((System.currentTimeMillis() % 5) == 0){
+            get_from_inventory();
+        }
         attack();
         demage();
         //heal();
         die();
-    }    
+    }
+    private void collect() {
+        List list;
+        list = getWorld().getObjectsAt(getX(), getY(), Weapon.class);
+        if (isTouching(Food.class)) {
+            Food food =(Food)getOneIntersectingObject(Food.class);
+            put_in_inventory(food);
+        }
+        else if ( isTouching(Weapon.class) && equipped != null){
+            Weapon weapon =(Weapon)getOneIntersectingObject(Weapon.class);
+            if (weapon != equipped) {
+                put_in_inventory(weapon);
+            }
+        }
+        
+        if (isTouching(Weapon.class) && equipped == null){
+            System.out.println("touching weapon");
+            Weapon weapon =(Weapon)getOneIntersectingObject(Weapon.class);
+            equipped = weapon;
+            //getWorld().addObject(weapon, getX(), getY());
+        }
+    }
+    
     private void move()
     {
         
@@ -63,54 +84,85 @@ public class Mensch extends Actor
         if (humanX > 0 && humanX < 999 && humanY > 0 && humanY < 799) {
             newspawn = 1;
         }
+        if (equipped != null) {
+            equipped.setLocation(getX(), getY());
+        }
     }
-    private void eat() {
-        if (isTouching(Pizza.class))  {
-            Pizza pizza=(Pizza)getOneIntersectingObject(Pizza.class);
-            if (nutrition+Pizza.nutrition <= 100) {
-                nutrition += Pizza.nutrition;
-            }
-            else nutrition = 100;
-            if (health +5 < 100) {
-                health+= 5;
-            }
-            else health = 100;
+    private void eat(Actor food) {
+        System.out.println("is food");
+        //Pizza pizza=(Pizza)getOneIntersectingObject(Pizza.class);
+        if (nutrition+ ((Food) food).nutrition <= 100) {
+            nutrition += ((Food) food).nutrition;
         }
-        else if (isTouching(Cupcake.class)) {
-            //System.out.println(inventory.get("Cupcakes"));
-            inventory.put("Cupcakes", inventory.get("Cupcakes") +1);
-            //System.out.println(inventory.get("Cupcakes"));
-            Cupcake cupcake=(Cupcake)getOneIntersectingObject(Cupcake.class);
-            if (nutrition+Cupcake.nutrition <= 100) {
-                nutrition += Cupcake.nutrition;
-            }
-            else nutrition = 100;
-            if (health +2 < 100) {
-                health+= 2;
-            }
-            else {
-                health = 100;
-            }
+        else nutrition = 100;
+        if (health +5 < 100) {
+            health+= 5;
         }
-        else if (isTouching(Banana.class)) {
-            //System.out.println(inventory.get("Cupcakes"));
-            inventory.put("Banana", inventory.get("Banana") +1);
-            //System.out.println(inventory.get("Cupcakes"));
-            Banana cupcake=(Banana)getOneIntersectingObject(Banana.class);
-            if (nutrition+Banana.nutrition <= 100) {
-                nutrition += Banana.nutrition;
-            }
-            else {
-                nutrition = 100;
-            }
-            if (health +2 < 100) {
-                health+= 2;
-            }
-            else {
-                health = 100;
-            }
-        }
+        else health = 100;
+        
         updateHealth();
+    }
+    private void use_item(Actor item) {
+        //System.out.println(item.getClass());
+        if (item instanceof Food) {
+            //System.out.println("isFood");
+            eat(item);
+        }
+        if (item instanceof Weapon) {
+            put_in_inventory(equipped);
+            equipped = item;
+            getWorld().addObject(equipped, getX(), getY());
+        }
+    }
+    private void get_from_inventory() {
+        int i = 1;
+        while(i< 10) {
+            if (Greenfoot.isKeyDown(Integer.toString(i))){
+                break;
+            }
+            else i++;
+        }
+        if (inventory[i-1][0] != null) {
+            use_item(inventory[i-1][0]);    
+        }
+        boolean removed = false;
+        for (int j = 9; j>= 0; j --) {
+            if ((inventory[i-1][j] != null)) {
+                inventory[i-1][j] = null;
+                System.out.println("removed");
+                removed =true;
+                if (j == 0) {
+                    Inventory.boxes[i-1].getItem(i);
+                }
+            }
+            if (removed) break;
+        }
+        
+    }
+    private void put_in_inventory(Actor item) {
+        boolean put = false;
+        for (int i = 0 ; i < inventory.length; i++) {
+            if (!put && inventory[i][0] == null) {
+                inventory[i][0] = item;
+                put = true;
+                break;
+            }
+            if (!put && (inventory[i][0].getClass() == item.getClass())) {
+                for (int j = 0; j < inventory[i].length; j++) {
+                    if ( inventory[i][j] == null) {
+                        inventory[i][j] = item;
+                        put = true;
+                        break;
+                    }
+                }
+            }
+            
+        }
+        if (!put) {
+            getWorld().showText("Inventory full", 200, 300);
+        }
+        
+        
     }
     private void die() {
         if (nutrition <= 0 || health <= 0) {
@@ -166,12 +218,9 @@ public class Mensch extends Actor
                     boolean to_remove =true;
                     for (Inventory inventory : getWorld().getObjects(Inventory.class)){
                         System.out.println(spear.getX() - inventory.getX());
-                            if ((spear.getX() == inventory.getX() && spear.getY() == inventory.getY()) ||  (spear.getX() == getX() && spear.getY() == getY())){
+                            if (((spear.getX() == inventory.getX() && spear.getY() == inventory.getY())) != ( (spear.getX() == getX() && spear.getY() == getY()))){
                                 to_remove =false;
- 
-                            //
                         }
-                        
                     }
                     if (to_remove){
                         getWorld().removeObject(spear);

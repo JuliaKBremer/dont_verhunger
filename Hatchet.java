@@ -14,6 +14,8 @@ public class Hatchet extends Weapon
      */
     public void act() 
     {
+        stick();
+        collect();
         // Add your action code here.
     }    
 }

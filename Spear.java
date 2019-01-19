@@ -13,6 +13,7 @@ public class Spear extends Weapon
     {
         scale();
         stick();
+        collect();
     } 
     private void scale() {
         
