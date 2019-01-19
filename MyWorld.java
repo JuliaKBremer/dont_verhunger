@@ -21,9 +21,7 @@ public class MyWorld extends World
      */
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(worldwidth, worldheight, 1);
-        //System.out.println(nutritionbar.referenceText);
         spawn();
         inventory();
     }
@@ -44,6 +42,22 @@ public class MyWorld extends World
         int maxcount = 10;
         if ((getObjects(Mensch.class)).size()<1){
             addObject(new Mensch(),(int)(Math.random()*worldwidth),(int)(Math.random()*worldheight));
+        }
+        else{
+            for (Mensch human : getObjects(Mensch.class)) {
+                if (human.getX() <= 1) {
+                    human.setLocation(worldwidth -2, human.getY());
+                }
+                else if (human.getX() >= worldwidth -1) {
+                    human.setLocation(0, human.getY());
+                }
+                if (human.getY() <= 1) {
+                    human.setLocation(human.getX(), worldheight -1);
+                }
+                else if (human.getY() >= worldheight -2) {
+                    human.setLocation(human.getX(), 2);
+                }
+            }
         }
         randomX = (int)(Math.random()*worldwidth);
         //randomY = (int)();

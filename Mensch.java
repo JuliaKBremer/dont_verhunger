@@ -58,7 +58,6 @@ public class Mensch extends Actor
         }
         
         if (isTouching(Weapon.class) && equipped == null){
-            System.out.println("touching weapon");
             Weapon weapon =(Weapon)getOneIntersectingObject(Weapon.class);
             equipped = weapon;
             //getWorld().addObject(weapon, getX(), getY());
@@ -91,7 +90,7 @@ public class Mensch extends Actor
         }
     }
     private void eat(Actor food) {
-        System.out.println("is food");
+        
         //Pizza pizza=(Pizza)getOneIntersectingObject(Pizza.class);
         if (nutrition+ ((Food) food).nutrition <= 100) {
             nutrition += ((Food) food).nutrition;
@@ -105,9 +104,7 @@ public class Mensch extends Actor
         updateHealth();
     }
     private void use_item(Actor item) {
-        //System.out.println(item.getClass());
         if (item instanceof Food) {
-            //System.out.println("isFood");
             eat(item);
         }
         if (item instanceof Weapon) {
@@ -132,7 +129,6 @@ public class Mensch extends Actor
         for (int j = 9; j>= 0; j --) {
             if ((inventory[i-1][j] != null)) {
                 inventory[i-1][j] = null;
-                //System.out.println("removed");
                 removed =true;
                 if (j == 0) {
                     Inventory.boxes[i-1].getItem(i);
@@ -221,23 +217,10 @@ public class Mensch extends Actor
         int randomX = 0;
         int randomY = 0;
         int randomAnzahl = 0;
-        System.out.println("spawn");
         randomX = (int)(Math.random()*((MyWorld)getWorld()).worldwidth);
         randomY = (int)(Math.random()*((MyWorld)getWorld()).worldheight);
         randomAnzahl = (int)(Math.random()*10);
-        if (humanX <= 1) {
-            this.setLocation(((MyWorld)getWorld()).worldwidth -2, humanY);
-        }
-        else if (humanX >= ((MyWorld)getWorld()).worldwidth -1) {
-            this.setLocation(0, humanY);
-        }
-        if (humanY <= 1) {
-            this.setLocation(humanX, ((MyWorld)getWorld()).worldheight -1);
-        }
-        else if (humanY >= ((MyWorld)getWorld()).worldheight -2) {
-            this.setLocation(humanX, 2);
-        }
-        getWorld().addObject(new Spear(), randomX,randomY);
+        //getWorld().addObject(new Spear(), randomX,randomY);
         ((MyWorld)getWorld()).spawn();
         newspawn =  false;
         
