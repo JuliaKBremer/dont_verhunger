@@ -10,6 +10,7 @@
         public int selfX = 0;
         public int betweenX = 0;
         public int betweenY = 0;
+        public static final int damage = 3;
         
         public void act() 
         {
@@ -30,11 +31,6 @@
             }
             die();
         }    
-        private void die() {
-            if (health <= 0) {
-                getWorld().removeObject(this);
-            }
-        }
         private void hunt() {
             for (Mensch human : getWorld().getObjects(Mensch.class)){
                     humanX = human.getX();

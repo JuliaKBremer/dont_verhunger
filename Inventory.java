@@ -20,8 +20,9 @@ public class Inventory extends Actor
     public void getItem(int key) {
         GreenfootImage image = new GreenfootImage("gras10.png");
         image.scale(50,50);
-        getWorld().getBackground().drawImage(image, this.getX() -20 , this.getY()-20);
-        getWorld().getBackground().drawImage(image, this.getX() -10 , this.getY()-10);
+        getWorld().setBackground(new GreenfootImage("gras.png"));
+        //getWorld().getBackground().drawImage(image, this.getX() -20 , this.getY()-20);
+        //getWorld().getBackground().drawImage(image, this.getX() -10 , this.getY()-10);
     }
         
     

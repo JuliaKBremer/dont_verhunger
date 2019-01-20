@@ -13,10 +13,5 @@ public class Pig extends Target
     {
         move();
         die();
-    }    
-    private void die() {
-        if (health <= 0) {
-            getWorld().removeObject(this);
-        }
-    }    
+    } 
 }

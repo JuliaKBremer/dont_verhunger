@@ -12,7 +12,8 @@ public class Weapon extends Actor
      * Act - do whatever the Weapon wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public static final int damage = 10;
+    public int damage = 10;
+    public int durability = 3;
     public void act() 
     {
         stick();

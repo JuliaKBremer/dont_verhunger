@@ -3,9 +3,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Target extends Actor
 {
     public int speed = 1;
+    public int health = 10;
+    public int damage = 0;
     public void act() 
     {
         move();
+        die();
     }    
     
     public void move() {
@@ -28,6 +31,13 @@ public class Target extends Actor
             break;
       }
       this.setLocation(x, y);   
-    }
+    }    
+    public void die() {
+        if (this.health <= 0) {
+            Banana meat = new Banana();
+            getWorld().addObject(meat, this.getX(), this.getY());
+            getWorld().removeObject(this);
+        }
+    }   
 
 }

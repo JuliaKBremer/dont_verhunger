@@ -66,7 +66,6 @@ public class Mensch extends Actor
     
     private void move()
     {
-        
         if(Greenfoot.isKeyDown("up")) {
             setLocation(getX(), getY()-this.speed);
         }
@@ -173,21 +172,27 @@ public class Mensch extends Actor
         if(Greenfoot.isKeyDown("space")) {
             if (equipped != null) {
                 //spear.setImage(""); <-- Neues Image bei angriff!
-                if (isTouching(Pig.class)) {
-                    Pig pig=(Pig)getOneIntersectingObject(Pig.class);
-                    pig.health -= ((Weapon)equipped).damage;
-                }
-                else if (isTouching(Hippo.class)) {
-                    Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
-                    hippo.health -= ((Weapon)equipped).damage;
+                if (isTouching(Target.class)) {
+                    Target target=(Target)getOneIntersectingObject(Target.class);
+                    target.health -= ((Weapon)equipped).damage;
+                    System.out.println(target.getClass());
+                    System.out.println(target.health);
+                    ((Weapon)equipped).durability -= 1;
+                    target.die();
+                    if (((Weapon)equipped).durability <= 0) {
+                        getWorld().removeObject(equipped);
+                        equipped = null;
+                    }
                 }
             }
         }
     }
     private void demage() {
-        if (isTouching(Hippo.class)) {
-            Hippo hippo=(Hippo)getOneIntersectingObject(Hippo.class);
-            health -= 2;
+        if (isTouching(Target.class)) {
+            Target target=(Target)getOneIntersectingObject(Target.class);
+            if((System.currentTimeMillis() % 5) == 0) {
+                health -= target.damage;
+            }
             updateHealth();
         }
     }
@@ -204,6 +209,7 @@ public class Mensch extends Actor
             if (humanX <= 1 || humanX >= ((MyWorld)getWorld()).worldwidth -1 || humanY <= 1 || humanY >= ((MyWorld)getWorld()).worldheight -1) {
                 getWorld().removeObjects(getWorld().getObjects(Food.class));
                 getWorld().removeObjects(getWorld().getObjects(Target.class));
+                getWorld().removeObjects(getWorld().getObjects(Flora.class));
                 for ( Weapon weapon : getWorld().getObjects(Weapon.class)) {
                     if (weapon != equipped) {
                         getWorld().removeObject(weapon);

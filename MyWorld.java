@@ -14,7 +14,7 @@ public class MyWorld extends World
     public Bar healthbar = new Bar("Player", "health Points", 100, 100);
     public Bar nutritionbar = new Bar("Player", "nutrition Points", 100, 100);
     static final int worldwidth = 800;
-    static final int worldheight = 400;
+    static final int worldheight = 500;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -22,17 +22,9 @@ public class MyWorld extends World
     public MyWorld()
     {    
         super(worldwidth, worldheight, 1);
+        setBackground(new GreenfootImage("gras.png"));
         spawn();
         inventory();
-    }
-    public void pflanzeGras()
-    {
-        for(int i=0; i<worldwidth; i++) {
-            for(int k=0; k<worldheight; k++) {
-                Gras gras = new Gras();
-                addObject(gras, i, k);
-            }
-        }
     }
 
     public void spawn() {
@@ -120,7 +112,7 @@ public class MyWorld extends World
             build = false;
         }
         
-        for (int i = 0; i < (int)(Math.random()*1); i++ ) {
+        for (int i = 0; i < (int)(Math.random()*3); i++ ) {
             while (!build) {
                 randomX = (int)(Math.random()*worldwidth);
                 randomY = (int)(Math.random()*worldheight);
@@ -143,6 +135,18 @@ public class MyWorld extends World
                 }
             }
             addObject(new Pig(),randomX,randomY);
+            build = false;
+        }
+        for (int i = 0; i < (int)(Math.random()*12); i++ ) {
+            while (!build) {
+                randomX = (int)(Math.random()*worldwidth);
+                randomY = (int)(Math.random()*worldheight);
+                if ((getObjectsAt(randomX, randomY, Actor.class)).size() < 1){ 
+                    //System.out.println((getObjectsAt(randomX, randomY, Actor.class)).size());
+                    build = true;
+                }
+            }
+            addObject(new Tree(),randomX,randomY);
             build = false;
         }
     }
