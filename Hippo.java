@@ -27,6 +27,7 @@
                 move();
             }
             if (betweenX < 100 || betweenY < 100) {
+                setDamage();
                 hunt();
             }
             die();

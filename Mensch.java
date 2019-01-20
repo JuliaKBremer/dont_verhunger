@@ -14,7 +14,7 @@ public class Mensch extends Actor
     private final int speed = 4;
     public static int died = 0;
     public int health = 100;
-    private int nutrition = 100;
+    public int nutrition = 100;
     public boolean newspawn = false;
     private int humanX = 0;
     private int humanY = 0;
@@ -48,7 +48,7 @@ public class Mensch extends Actor
         else if ( isTouching(Weapon.class) && equipped != null){
             for (Weapon weapon : list) {
                 if (weapon != equipped) {
-                    System.out.println("notsame");
+                    //System.out.println("notsame");
                     put_in_inventory(weapon);
                     getWorld().removeObject(weapon);
                     collected = true;
@@ -164,6 +164,10 @@ public class Mensch extends Actor
     }
     private void die() {
         if (nutrition <= 0 || health <= 0) {
+            getWorld().addObject(new Died(), getWorld().getWidth() / 2, 
+                getWorld().getHeight() / 2);
+            getWorld().showText("GAME   OVER", getWorld().getWidth() / 2, 
+                getWorld().getHeight() / 2 + 50);
             died = 1;
             getWorld().removeObject(this);
         }
@@ -175,8 +179,8 @@ public class Mensch extends Actor
                 if (isTouching(Target.class)) {
                     Target target=(Target)getOneIntersectingObject(Target.class);
                     target.health -= ((Weapon)equipped).damage;
-                    System.out.println(target.getClass());
-                    System.out.println(target.health);
+                    //System.out.println(target.getClass());
+                    //System.out.println(target.health);
                     ((Weapon)equipped).durability -= 1;
                     target.die();
                     if (((Weapon)equipped).durability <= 0) {
@@ -190,7 +194,10 @@ public class Mensch extends Actor
     private void demage() {
         if (isTouching(Target.class)) {
             Target target=(Target)getOneIntersectingObject(Target.class);
+            //System.out.println(System.currentTimeMillis());
+            //System.out.println(System.currentTimeMillis() % 5);
             if((System.currentTimeMillis() % 5) == 0) {
+                //System.out.println(target.damage);
                 health -= target.damage;
             }
             updateHealth();

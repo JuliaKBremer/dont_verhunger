@@ -39,5 +39,17 @@ public class Target extends Actor
             getWorld().removeObject(this);
         }
     }   
-
+    public void setDamage() {
+        for (Target target : getWorld().getObjects(Target.class)){
+            //System.out.println(target.toString());
+            //System.out.println(target.toString().indexOf("Hippo"));
+            if (target.toString().startsWith("Hippo")) {
+                    damage = Hippo.damage;
+            }
+            /*else if (target.toString().startsWith("Pig")) {
+                    damage = 0;
+            }*/
+            //System.out.println(target);
+        }
+    }
 }

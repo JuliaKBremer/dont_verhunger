@@ -16,6 +16,7 @@ public class Inventory extends Actor
     public void act() 
     {
         setItem();
+        showNumber();
     }
     public void getItem(int key) {
         GreenfootImage image = new GreenfootImage("gras10.png");
@@ -27,7 +28,6 @@ public class Inventory extends Actor
         
     
     public void setItem() {
-        // Variable von Mensch - isTouching() -> Je nach, Picture in Feld, protected!
         if (belegt == false) {
             boxX = getX();
             boxY = getY();
@@ -42,13 +42,15 @@ public class Inventory extends Actor
                     if (human.inventory[i][0] != null) {
                         GreenfootImage image = human.inventory[i][0].getImage();
                         image.scale(30,30);
-                        getWorld().getBackground().drawImage(image, boxes[i].getX() -20 , boxes[i].getY()-20);
+                        getWorld().getBackground().drawImage(image, boxes[i].getX() -20 , 
+                            boxes[i].getY()-20);
                     }
                 }
             }
         }
     }
-    private void showText() {
-        //switch case isTouching();
+    private void showNumber() {
+        //number of items
+        
     }
 }

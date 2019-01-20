@@ -25,6 +25,7 @@ public class MyWorld extends World
         setBackground(new GreenfootImage("gras.png"));
         spawn();
         inventory();
+        showGameOver();
     }
 
     public void spawn() {
@@ -176,8 +177,14 @@ public class MyWorld extends World
         // }
     // }
     
-    // private void showGameOver()
-    // {
-        // addObject(new GameOver(), getWidth() / 2, getHeight() / 2);
-    // }
+    private void showGameOver() {
+        for (Mensch human : getObjects(Mensch.class)){
+            if (human.health <= 0 || human.nutrition <= 0) {
+                System.out.println(human.nutrition);
+                System.out.println(human.health);
+                addObject(new Died(), getWidth() / 2, getHeight() / 2);
+                showText("GAME   OVER", getWidth() / 2, getHeight() / 2 + 50);
+            }
+        }
+    }
 }
