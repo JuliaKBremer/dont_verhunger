@@ -107,7 +107,7 @@ public class Mensch extends Actor
             eat(item);
         }
         if (item instanceof Weapon) {
-            put_in_inventory(equipped);
+            if(equipped != null ) put_in_inventory(equipped);
             getWorld().removeObject(equipped);
             equipped = item;
             getWorld().addObject(equipped, getX(), getY());
@@ -207,7 +207,7 @@ public class Mensch extends Actor
             getWorld().removeObjects(getWorld().getObjects(Bar.class));
             Bar bar = new Bar("Player", "health Points", health, 100);
             Bar nutritionbar = new Bar("Player", "nutrition Points", nutrition, 100);
-            getWorld().addObject(bar, ((MyWorld)getWorld()).worldwidth/8, ((MyWorld)getWorld()).worldheight/20);
+            getWorld().addObject(bar, ((MyWorld)getWorld()).worldwidth/6, ((MyWorld)getWorld()).worldheight/20);
             getWorld().addObject(nutritionbar, ((MyWorld)getWorld()).worldwidth/8 *5, ((MyWorld)getWorld()).worldheight/20);
     }
 
